@@ -1,0 +1,12 @@
+steps:
+# Build step for the Docker image (if using Custom Runtimes)
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-app', '.']
+
+# Push the Docker image to Google Container Registry (if using Custom Runtimes)
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/my-app']
+
+# Deploy to Google App Engine
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']
